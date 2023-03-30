@@ -1,0 +1,23 @@
+*{
+  text-align: center
+}
+#root{
+  background-color:rgba(248, 249, 250, 0.938)
+}
+
+@import "~bootstrap/scss/bootstrap";
+
+.btn-huhu{
+  color:aqua
+}
+
+
+.addbookdivscale{
+  transform:scaleY(0.93) scaleX(0.95);
+}
+
+@media  (min-width:900px) {
+  .addbookdivscale{
+    transform:scaleY(0.9) scaleX(0.92);
+  }
+}

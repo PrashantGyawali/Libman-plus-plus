@@ -1,24 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+// import logo from './logo.svg';
+import './App.scss';
+import  Addbookbtn  from './Addbookbtn.js';
+import  Addbookdiv  from './Addbook/Addbookdiv.js';
+// import  Button from 'react-bootstrap/Button';
+import { motion, AnimatePresence } from "framer-motion"
+import {useState } from 'react';
 
 function App() {
+
+  const [newbookadding,togglenewbookadding]=useState(false);
+
+  const toggle=function()
+  {
+  newbookadding?togglenewbookadding(false):togglenewbookadding('new');
+  console.log(newbookadding);
+  };
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div className='container-fluid p-3  text-center justify-content-center' >
+  
+      <div className='container-fluid bg-light text-center fixed-top' >
+      <div className="h1">Libman++</div>
+      </div> 
+      <br/>
+      <br/>
+
+    
+    <Addbookbtn togglefn={()=>{toggle(newbookadding)}} open={newbookadding}/>
+
+
+    <AnimatePresence>{ newbookadding && <Addbookdiv togglenewbookadding={toggle}/>}</AnimatePresence>
+
+
+      </div>
   );
 }
 
