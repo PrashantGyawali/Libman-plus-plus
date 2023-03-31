@@ -1,15 +1,14 @@
 // import  Button from 'react-bootstrap/Button';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef} from 'react';
 import  {motion}  from "framer-motion";
 import Form from 'react-bootstrap/Form';
 import Selecttags from '../selecttags';
-import Container from '../Container';
 import Authorinputbtn from './authorinput';
 import Booknameinput from './booknameinput';
 import ImageSelect from './imageselect';
 import  Button  from 'react-bootstrap/Button';
+import  Container  from 'react-bootstrap/Container';
 import '../App.scss'
-// import NumericI
 
 
 

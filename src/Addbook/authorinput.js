@@ -1,5 +1,6 @@
 import  Form  from "react-bootstrap/Form";
-import Container from "../Container";
+import  Container  from 'react-bootstrap/Container';
+
 
 const Authorinputbtn=(props)=>
 {
