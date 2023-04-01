@@ -22,79 +22,26 @@
     "published": 1988,
     "updated": "2023/03/31"
     },
-{
-    "id": 1,
-    "bookname": "The Alchemist",
-    "authors": "Paulo Coelho",
-    "tags": [
-        {
-            "value": "Fantasy",
-            "label": "Fantasy"
-        },
-        {
-            "value": "Adventure",
-            "label": "Adventure"
-        },
-        {
-            "value": "Drama",
-            "label": "Drama"
-        }
-    ],
-    "description": "The Alchemist is a classic novel in which a boy named Santiago embarks on a journey seeking treasure in the Egyptian pyramids after having a recurring dream about it and on the way meets mentors, falls in love, and most importantly, learns the true importance of who he is and how to improve himself ...",
-    "url": "https://media.thuprai.com/front_covers/The-Alchemist.jpg",
-    "published": 1988,
-    "updated": "2023/03/31"
-    },
     {
-    "id": 1,
-    "bookname": "The Alchemist",
-    "authors": "Paulo Coelho",
-    "tags": [
+        "id": 2,
+        "bookname": "The Catcher in the Rye",
+        "authors": "J.D. Salinger",
+        "tags": [
         {
-            "value": "Fantasy",
-            "label": "Fantasy"
-        },
-        {
-            "value": "Adventure",
-            "label": "Adventure"
-        },
-        {
-            "value": "Drama",
-            "label": "Drama"
+        "value": "Coming-of-age",
+        "label": "Coming-of-age"
         }
-    ],
-    "description": "The Alchemist is a classic novel in which a boy named Santiago embarks on a journey seeking treasure in the Egyptian pyramids after having a recurring dream about it and on the way meets mentors, falls in love, and most importantly, learns the true importance of who he is and how to improve himself ...",
-    "url": "https://media.thuprai.com/front_covers/The-Alchemist.jpg",
-    "published": 1988,
-    "updated": "2023/03/31"
-    },
-    {
-    "id": 1,
-    "bookname": "The Alchemist",
-    "authors": "Paulo Coelho",
-    "tags": [
-        {
-            "value": "Fantasy",
-            "label": "Fantasy"
+        ],
+        "description": "The Catcher in the Rye is a novel about a teenage boy named Holden Caulfield who is expelled from his prep school and wanders around New York City for a few days, trying to make sense of his life and future. The book is a classic coming-of-age story that deals with themes of alienation, innocence, and identity.",
+        "url": "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/91HPG31dTwL.jpg",
+        "published": 1951,
+        "updated": "2023/04/02"
         },
-        {
-            "value": "Adventure",
-            "label": "Adventure"
-        },
-        {
-            "value": "Drama",
-            "label": "Drama"
-        }
-    ],
-    "description": "The Alchemist is a classic novel in which a boy named Santiago embarks on a journey seeking treasure in the Egyptian pyramids after having a recurring dream about it and on the way meets mentors, falls in love, and most importantly, learns the true importance of who he is and how to improve himself ...",
-    "url": "https://media.thuprai.com/front_covers/The-Alchemist.jpg",
-    "published": 1988,
-    "updated": "2023/03/31"
-    },
+   
 {
-    "id": 1,
-    "bookname": "The Alchemist",
-    "authors": "Paulo Coelho",
+    "id": 3,
+    "bookname": "Harry Potter and the Philosopher's Stone",
+    "authors": "J. K. Rowling",
     "tags": [
         {
             "value": "Fantasy",
@@ -109,32 +56,99 @@
             "label": "Drama"
         }
     ],
-    "description": "The Alchemist is a classic novel in which a boy named Santiago embarks on a journey seeking treasure in the Egyptian pyramids after having a recurring dream about it and on the way meets mentors, falls in love, and most importantly, learns the true importance of who he is and how to improve himself ...",
-    "url": "https://media.thuprai.com/front_covers/The-Alchemist.jpg",
-    "published": 1988,
+    "description": "It is a story about Harry Potter, an orphan brought up by his aunt and uncle because his parents were killed when he was a baby. Harry is unloved by his uncle and aunt but everything changes when he is invited to join Hogwarts School of Witchcraft and Wizardry and he finds out he's a wizard.",
+    "url": "https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Harry_Potter_and_the_Philosopher%27s_Stone_Book_Cover.jpg/220px-Harry_Potter_and_the_Philosopher%27s_Stone_Book_Cover.jpg",
+    "published": 1997,
     "updated": "2023/03/31"
     },
-{
-    "id": 1,
-    "bookname": "The Alchemist",
-    "authors": "Paulo Coelho",
-    "tags": [
-        {
-            "value": "Fantasy",
-            "label": "Fantasy"
-        },
-        {
-            "value": "Adventure",
-            "label": "Adventure"
-        },
-        {
-            "value": "Drama",
-            "label": "Drama"
-        }
-    ],
-    "description": "The Alchemist is a classic novel in which a boy named Santiago embarks on a journey seeking treasure in the Egyptian pyramids after having a recurring dream about it and on the way meets mentors, falls in love, and most importantly, learns the true importance of who he is and how to improve himself ...",
-    "url": "https://media.thuprai.com/front_covers/The-Alchemist.jpg",
-    "published": 1988,
-    "updated": "2023/03/31"
-    }
+
+            {
+              "id": 4,
+              "bookname": "To Kill a Mockingbird",
+              "authors": "Harper Lee",
+              "tags": [
+                {
+                  "value": "Classic",
+                  "label": "Classic"
+                },
+                {
+                  "value": "Fiction",
+                  "label": "Fiction"
+                },
+                {
+                  "value": "Coming-of-age",
+                  "label": "Coming-of-age"
+                }
+              ],
+              "description": "To Kill a Mockingbird is a classic novel set in the fictional town of Maycomb, Alabama during the Great Depression. It follows the story of a young girl named Scout Finch as she grows up and learns about racial injustice and the importance of empathy and courage. The book was published in 1960 and won the Pulitzer Prize for fiction the following year.",
+              "url": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQ2qkJLjkVrYGC7JvdfFVZQU-LIVBDggNsIHxmb8SOjLV3HsVnu",
+              "published": 1960,
+              "updated": "2023/03/31"
+            },
+            {
+              "id": 5,
+              "bookname": "1984",
+              "authors": "George Orwell",
+              "tags": [
+                {
+                  "value": "Classic",
+                  "label": "Classic"
+                },
+                {
+                  "value": "Dystopian",
+                  "label": "Dystopian"
+                },
+                {
+                  "value": "Political",
+                  "label": "Political"
+                }
+              ],
+              "description": "1984 is a dystopian novel set in a future totalitarian society where individuality and independent thought are outlawed. The story follows the life of Winston Smith, a low-ranking member of the ruling Party, as he rebels against the oppressive regime and falls in love with a fellow rebel. The book was published in 1949 and has become a classic of modern literature.",
+              "url": "https://i0.wp.com/www.printmag.com/wp-content/uploads/2017/01/2a34d8_a6741e88335241308890543d203ad89dmv2.jpg?resize=500%2C815&ssl=1",
+              "published": 1949,
+              "updated": "2023/03/31"
+            },
+            {
+              "id": 6,
+              "bookname": "The Great Gatsby",
+              "authors": "F. Scott Fitzgerald",
+              "tags": [
+                {
+                  "value": "Classic",
+                  "label": "Classic"
+                },
+                {
+                  "value": "Fiction",
+                  "label": "Fiction"
+                },
+                {
+                  "value": "Romance",
+                  "label": "Romance"
+                }
+              ],
+              "description": "The Great Gatsby is a novel set in the Roaring Twenties that explores themes of wealth, love, and the American Dream. It follows the story of Jay Gatsby, a wealthy man who becomes obsessed with winning back his former love, Daisy Buchanan. The book was published in 1925 and is widely regarded as a masterpiece of American literature.",
+              "url": "https://i0.wp.com/americanwritersmuseum.org/wp-content/uploads/2018/02/CK-3.jpg?resize=267%2C400&ssl=1",
+              "published": 1925,
+              "updated": "2023/03/31"
+            },
+            {
+                "id": 7,
+                "bookname": "Pride and Prejudice",
+                "authors": "Jane Austen",
+                "tags": [
+                {
+                "value": "Romance",
+                "label": "Romance"
+                },
+                {
+                "value": "Comedy",
+                "label": "Comedy"
+                }
+                ],
+                "description": "Pride and Prejudice is a novel set in early 19th century England that follows the lives of the Bennet family, particularly the second oldest daughter, Elizabeth, as she navigates the societal expectations of the time and falls in love with Mr. Darcy, a wealthy and aloof gentleman. The book is a classic of English literature and is known for its wit, social commentary, and timeless love story.",
+                "url": "https://austenprose.files.wordpress.com/2010/07/pride-and-prejudice-barnes-nobel-2015.jpg",
+                "published": 1813,
+                "updated": "2023/04/02"
+                }
+
 ]

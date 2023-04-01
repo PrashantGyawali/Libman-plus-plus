@@ -5,7 +5,7 @@ export default function BookComponent(prop)
 
     const props= prop.data;
     return (
-            <div className='col-md-6 col-12 g-3'>
+            <div className='col-md-6 col-12 g-3 bookcomponentscale'>
 
                     <div className="card w-100 p-0" >
                         <div className="row g-0">
@@ -33,10 +33,10 @@ export default function BookComponent(prop)
 
                                 <div className="h-100 justify-content-center text-start" style={{display:'flex', flexDirection:'column'}} >
                                 <p className="text-dark text-start text-truncate m-0" style={{overflow:'hidden'}}>
-                                        <small class="text-muted">Published: {props.published}</small>
+                                        <small className="text-muted">Published: {props.published}</small>
                                 </p>
                                     <p className="text-dark text-start text-truncate m-0" style={{overflow:'hidden'}}>
-                                        <small class="text-muted">Last updated: {props.updated}</small>
+                                        <small className="text-muted">Last updated: {props.updated}</small>
                                     </p>
                                 </div>
 

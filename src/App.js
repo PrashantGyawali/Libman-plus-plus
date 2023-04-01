@@ -6,7 +6,7 @@ import  Addbookdiv  from './Addbook/Addbookdiv.js';
 import { motion, AnimatePresence } from "framer-motion"
 import {useState } from 'react';
 
-import Booklist from './Booklist/booklistdiv';
+import Booklistdiv from './Booklist/booklistdiv';
 
 function App() {
 
@@ -40,7 +40,7 @@ function App() {
 
       </div>
 
-     <Booklist/>
+     <Booklistdiv/>
     </>
   );
 }

@@ -2,7 +2,7 @@
 import { useState, useRef} from 'react';
 import  {motion}  from "framer-motion";
 import Form from 'react-bootstrap/Form';
-import Selecttags from '../selecttags';
+import Selecttags from './selecttags';
 import Authorinputbtn from './authorinput';
 import Booknameinput from './booknameinput';
 import ImageSelect from './imageselect';
@@ -35,10 +35,10 @@ import '../App.scss'
 
 const divanimation={
         key:'addbookbtn',
-        initial:{y: "100%", opacity: 0, scale:0.75},
-        animate:{y: 0, opacity: 1, scale: 1},
+        initial:{y: "100%", opacity: 0, scaleY:0},
+        animate:{y: 0, opacity: 1, scaleY: 1},
         transition:{duration:0.3, ease: "easeOut"},
-        exit:{y: "100%", opacity: 0, scale:0.5, transition:{duration:0.3}}
+        exit:{y: "100%", opacity: 0, scaleY:0, transition:{duration:0.3}}
         }
 
 const submitfn=(e)=>{

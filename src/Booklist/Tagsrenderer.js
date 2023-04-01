@@ -10,7 +10,7 @@ export default function Tags(props){
                     let x= i===(taglist.length-1)?'':', ';
                     return (
                     <>
-                    <a href='http://localhost:3000/'>{tag}</a>{x}</>
+                    <a href='http://localhost:3000/' key={i}>{tag}</a>{x}</>
                     );
                 }
             )}

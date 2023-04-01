@@ -45,6 +45,22 @@
   }
 }
 
+@media  (max-width:360px) {
+
+  .bookcomponentscale{
+    transform:scaleY(0.93)
+  }
+
+  @media  (max-width:290px) {
+    .bookcomponentscale{
+      transform:scaleY(0.85)
+    }
+  }
+}
+
+
+
+
 
 
 @media  (min-width:1000px) {

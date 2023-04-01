@@ -1,0 +1,114 @@
+[
+    {
+        "value": "Action",
+        "label": "Action"
+    },
+    {
+        "value": "Adult",
+        "label": "Adult"
+    },
+    {
+        "value": "Adventure",
+        "label": "Adventure"
+    },
+    {
+        "value": "Animated",
+        "label": "Animated"
+    },
+    {
+        "value": "Animated",
+        "label": "Animated"
+    },
+    {
+        "value": "Auto-biography",
+        "label": "Auto-biography"
+    },
+    {
+        "value": "Biography",
+        "label": "Biography"
+    },
+    {
+        "value": "Classic",
+        "label": "Classic"
+    },
+    {
+        "value": "Comedy",
+        "label": "Comedy"
+    },
+    {
+        "value": "Coming-of-age",
+        "label": "Coming-of-age"
+    },
+    {
+        "value": "Drama",
+        "label": "Drama"
+    },
+    {
+        "value": "Dystopian",
+        "label": "Dystopian"
+    },
+    {
+        "value": "Fairy Tale",
+        "label": "Fairy Tale"
+    },
+    {
+        "value": "Family",
+        "label": "Family"
+    },
+    {
+        "value": "Fantasy",
+        "label": "Fantasy"
+    },
+    {
+        "value": "Fiction",
+        "label": "Fiction"
+    },
+    {
+        "value": "Historical",
+        "label": "Historical"
+    },
+    {
+        "value": "Horror",
+        "label": "Horror"
+    },
+    {
+        "value": "Musical",
+        "label": "Musical"
+    },
+    {
+        "value": "Mystery",
+        "label": "Mystery"
+    },
+    {
+        "value": "Political",
+        "label": "Political"
+    },
+    {
+        "value": "Religion",
+        "label": "Religion"
+    },
+    {
+        "value": "Romance",
+        "label": "Romance"
+    },
+    {
+        "value": "Sci-fi",
+        "label": "Sci-fi"
+    },
+    {
+        "value": "Short Stories",
+        "label": "Short Stories"
+    },
+    {
+        "value": "Sports",
+        "label": "Sports"
+    },
+    {
+        "value": "Thriller",
+        "label": "Thriller"
+    },
+    {
+        "value": "War",
+        "label": "War"
+    }
+]
