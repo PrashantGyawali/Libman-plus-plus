@@ -1,8 +1,6 @@
-// import logo from './logo.svg';
 import './App.scss';
 import  Addbookbtn  from './Addbookbtn.js';
 import  Addbookdiv  from './Addbook/Addbookdiv.js';
-// import  Button from 'react-bootstrap/Button';
 import { motion, AnimatePresence } from "framer-motion"
 import {useState } from 'react';
 

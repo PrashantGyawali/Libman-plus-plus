@@ -9,6 +9,9 @@ import ImageSelect from './imageselect';
 import  Button  from 'react-bootstrap/Button';
 import  Container  from 'react-bootstrap/Container';
 import '../App.scss'
+import { useBook } from "../BookContext";
+import { useEffect } from 'react';
+
 
 
 
@@ -16,9 +19,13 @@ import '../App.scss'
 {
 
     // const defaultvalues=useRef(props.defaultvalues);
-    const [Coverlink,setCoverlink]=useState('http://cdn.onlinewebfonts.com/svg/img_27177.png')
+    const [Coverlink,setCoverlink]=useState('');
+    const books = (useBook()).allbooks;
+    const setbooks = (useBook()).setallbooks;
 
-    let formdata = useRef({bookname:'',authors: '', tags:'', description:'', url:'' })
+    useEffect(()=>{console.log(books)});
+
+    let formdata = useRef({bookname:'',authors: '', tags:'', description:'', url:'', published: '', updated:'' })
 
     function updateformfunc(e){
         let m =e.target.name;
@@ -43,7 +50,20 @@ const divanimation={
 
 const submitfn=(e)=>{
     e.preventDefault();
+    console.log('hihu submitted', books);
+    let temp=[...books];
+    let up=(new Date()).toISOString();
+    temp.unshift({...formdata.current, 'id':100, 'updated' : up });
+    setbooks(temp);
+}
+
+const dateonchange=(e)=>{
+    if(Number(e.target.value)>Number(e.target.max) || Number(e.target.value)<Number(e.target.min))
+     {
+        e.target.value=2023
     }
+    else{ updateformfunc(e) }; 
+}
 
 const cancel=()=>
 {props.togglenewbookadding()};
@@ -83,7 +103,7 @@ return (
 
                 <Container>
                 <div className='col-12 mb-1 ms-1 ' style={{ textAlign: 'left'}}>Date published:</div>
-                <input type="number" className='w-100 form-control' name="dateofpublish" id="" defaultValue={2023} min='0' max='2023' onChange={(e)=>{if(Number(e.target.value)>Number(e.target.max) || Number(e.target.value)<Number(e.target.min)) {e.target.value=2023}; }} style={{ textAlign: 'left', fontSize:19}} />
+                <input type="number" required className='w-100 form-control' name="published" id="" defaultValue={2023} min='0' max='2023' onChange={(e)=>{dateonchange(e)}} style={{ textAlign: 'left', fontSize:19}} />
                 </Container>
                 
                 
@@ -96,7 +116,7 @@ return (
 
             <div className='container h-100' style={{ display:'flex', justifyContent:'center', alignItems:'center'}}>
                 <div>
-                <Button variant="success"  style={{fontSize:25, margin:7}}>Add Book</Button>
+                <button className="btn btn-success" type='submit' style={{fontSize:25, margin:7}} >Add Book</button>
                 <Button variant="danger"  style={{fontSize:25, margin:7}} onClick={cancel}>Cancel</Button>
                 </div>
                 

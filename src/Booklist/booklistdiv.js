@@ -1,26 +1,28 @@
 // import { Container } from "react-bootstrap";
 import BookComponent from "./Bookcomponent";
-import data from '../testdata.json'
+
 import "../App.scss";
 import Filteroptions from "./Filteroptions";
-import { useState } from 'react';
+import { useState} from 'react';
 import { AnimatePresence } from "framer-motion";
-import { motion } from 'framer-motion';
+import { useEffect } from 'react';
+import { useBook } from "../BookContext";
 
 
 function Booklistdiv(){
-    
-    let unfilteredbooks= data;
 
-    const [filteredBooks,setfilteredBooks]=useState(unfilteredbooks);
-    const [bookname,setBookname]=useState('');
+    const [draftorbook,setdraftorbook]=useState('allbooks'); //state to show drafts or books
+    let unfilteredbooks = (useBook())[draftorbook]; // getiing whatever we said to the 'draftorbook' state
+
+    const [filteredBooks,setfilteredBooks]=useState(unfilteredbooks); //initially
+    const [bookname,setBookname]=useState(''); //setting default values for the filter option div
     const [authorname,setauthorname]=useState('');
     const [tags,settags]=useState('');
-    const [filteroptiondiv,setfilteredoptiondiv]=useState(false);
+    const [filteroptiondiv,setfilteredoptiondiv]=useState(false); //showing the filter option div?
 
-    console.log(tags);
 
-    const finalfiltered=(unfilteredbooks)=>{
+
+    const finalfiltered=(unfilteredbooks)=>{  //actually filtering
         let x=unfilteredbooks;
         x=x.filter((e)=>
         {
@@ -31,32 +33,45 @@ function Booklistdiv(){
            return (bookname?(e.bookname).match(re):true) && (authorname?(e.authors).match(re2):true) && areEqual;
 
         });
-// console.log(x);
+        console.log(x);
+
+
+        setfilteredBooks(x);
     }
 
+    const refreshfilter=()=>{ //refresh the filter i.e show all books once again
+        setauthorname('');
+        setfilteredBooks(unfilteredbooks);
+        setauthorname('');
+        settags('');
+    }
 
-
-    finalfiltered(unfilteredbooks);
+useEffect(()=>finalfiltered(unfilteredbooks),[tags,authorname,bookname,unfilteredbooks]); //whenever the options in filter option div changes re render the list
 
 
     return (
-<motion.div layout transition={{ duration: 0.5 }}>
-        <div>
+                <div>
 
-            <div className="container d-flex justify-content-between align-items-baseline" style={{borderBottom:'3px solid grey'}}>
-                 <div className='h1 px-2 m-0 '>Books</div>
-                 <div className='btn btn-secondary py-0' style={{fontSize:20}} onClick={()=>setfilteredoptiondiv(!filteroptiondiv)}>Tools</div>
-            </div>
+                    <div className="container d-flex justify-content-between align-items-baseline" style={{borderBottom:'3px solid grey'}}>
+                        <div className='d-flex align-items-baseline'>
+                            <div className={`px-2  ${draftorbook==='allbooks'? "h1 m-9" : "h3 text-muted mx-2"}`} onClick={()=>{setdraftorbook('allbooks')}}>Books</div>
+                            <div className={`px-2  ${draftorbook==='alldrafts'? "h1 m-9" : "h3 text-muted mx-2"}`} onClick={()=>{setdraftorbook('alldrafts')}}>Drafts</div>
+                        </div>
 
-            <AnimatePresence>{filteroptiondiv && <Filteroptions {...{settags,setBookname,setauthorname}} />}</AnimatePresence>
+                        <div>
+                            <div className='btn btn-secondary py-0 m-1' style={{fontSize:20}} onClick={()=>setfilteredoptiondiv(!filteroptiondiv)}>Tools</div>
+                            <button className="btn btn-secondary py-0" style={{fontSize:20}} onClick={refreshfilter}>&#8635;</button>
+                        </div>
+                    </div>
 
-            <div className='row m-0' style={{justifyContent:'flex-start', padding:'0px 1px'}}>
-                {filteredBooks && filteredBooks.map((e)=><BookComponent data={e} key={e.id}/>)}
-            </div>
+                    <AnimatePresence>{filteroptiondiv && <Filteroptions {...{settags,setBookname,setauthorname}} />}</AnimatePresence>
 
-        </div>
+                    <div className='row m-0 align-items-baseline' style={{justifyContent:'flex-start', padding:'0px 1px'}}>
+                        {filteredBooks && filteredBooks.map((e)=><BookComponent data={e} key={e.id}/>)}
+                    </div>
 
-        </motion.div>
+                </div>
+
     );
 }
 

@@ -5,7 +5,7 @@ import options from '../tagoptions.json'
 
 export default function Filteroptions(props){
 
-    const [selectedOptions, setSelectedOptions] = useState([])
+    const [selectedOptions, setSelectedOptions] = useState([]); //used to set maximum no of tags for filtering to 5
 
 
     const filterdivanimation={
@@ -24,12 +24,12 @@ export default function Filteroptions(props){
                 <div className="container pb-3">
 
                     <div className="form-floating mb-1">
-                    <input type="Text" className="form-control text-start" placeholder="Book name" onChange={(e)=>{props.setBookname(e.target.value)}}/>
-                    <label for="floatingInput">Book Name:</label>
+                    <input type="Text" className="form-control text-start" placeholder="Book name" id='booknamefilter' onChange={(e)=>{props.setBookname(e.target.value)}}/>
+                    <label>Book Name:</label>
                     </div>
 
                     <div className="form-floating mb-1">
-                    <input type="text" className="form-control text-start" placeholder="Author" onChange={(e)=>{props.setauthorname(e.target.value)}}/>
+                    <input type="text" className="form-control text-start" placeholder="Author" id='authorfilter' onChange={(e)=>{props.setauthorname(e.target.value)}}/>
                     <label>Authors:</label>
                     </div>
 
@@ -44,7 +44,7 @@ export default function Filteroptions(props){
                     // defaultValue={{  label: "Action", value: "Action"}}
                     onChange={(o) => {setSelectedOptions(o); props.settags(o);}} 
                     isOptionDisabled={() => selectedOptions.length >= 5} 
-                    id='hmm' 
+                    id='filtertags' 
                     style={{textAlign:'left'}} 
                     menuPortalTarget={document.body} 
                     styles={{ menuPortal: base => ({ ...base, zIndex: 9999})}}
