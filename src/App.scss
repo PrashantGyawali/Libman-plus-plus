@@ -88,3 +88,12 @@
    background-size:cover;
    background-repeat:none;
 }
+
+
+.booktitle{
+  cursor: pointer;
+}
+
+.booktitle:hover{
+  text-decoration: underline;
+}

@@ -25,7 +25,6 @@ import { useEffect } from 'react';
     const currentid = (useBook()).currentid;
     const setcurrentid = (useBook()).setcurrentid;
 
-    // useEffect(()=>{console.log(books)});
 
 
     let formdata = useRef({bookname:'',authors: '', tags:'', description:'', url:'', published: '2023', updated:'' })
@@ -75,13 +74,18 @@ const cancel=()=>
 {props.togglenewbookadding()};
 
 const close=()=>{
-    let up=(((new Date().toLocaleString("sv-SE")).slice(0,19)).replaceAll('-','/'));
-    let temp=[...drafts];
-    let tempid=currentid;
-    temp.unshift({...formdata.current, 'id':tempid, 'updated' : up });
-    setcurrentid(currentid+1);
-    setdrafts(temp);
-    localStorage.drafts=JSON.stringify(temp);
+    if(formdata.current.bookname)
+        {
+            let up=(((new Date().toLocaleString("sv-SE")).slice(0,19)).replaceAll('-','/'));
+            let temp=[...drafts];
+            let tempid=currentid;
+            temp.unshift({...formdata.current, 'id':tempid, 'updated' : up });
+            tempid++;
+            setcurrentid(tempid);
+            setdrafts(temp);
+            localStorage.drafts=JSON.stringify(temp);
+            localStorage.currentid=tempid;
+        }
     props.togglenewbookadding();
 }
 

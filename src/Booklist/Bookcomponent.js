@@ -21,7 +21,7 @@ export default function BookComponent(prop)
 
                             <div className="col-8 col-md-7 p-2 d-flex flex-column">
                                 <div>
-                                <h4 className="text-dark">{props.bookname}</h4>
+                                <h4 className="text-dark booktitle" >{props.bookname}</h4>
                                     <h6 className="text-dark text-end">-{props.authors}</h6>
 
                                     <div>

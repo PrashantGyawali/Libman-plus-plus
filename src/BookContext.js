@@ -8,13 +8,12 @@ export const BookProvider=({children})=>{
     // let t=[...data];//testin purposes only, will implement local storage soon
     // t.pop();
 
-    localStorage.clear();
 
-    let tempid=localStorage.currentid?localStorage.currentid:1;
+    let tempid=localStorage.currentid?Number(localStorage.currentid):1;
     let t = localStorage.drafts ? JSON.parse(localStorage.drafts) : [];
     const [alldrafts,setalldrafts]= useState(t);
     const [currentid,setcurrentid]=useState(tempid);
-    console.log(t);
+
 
     return (
     <BookContext.Provider value={{allbooks,setallbooks,alldrafts,setalldrafts,currentid,setcurrentid}}>
