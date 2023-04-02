@@ -37,8 +37,9 @@ function App() {
 
 
       </div>
+      
+     <Booklistdiv newbookadding={newbookadding}/>
 
-     <Booklistdiv/>
     </>
   );
 }

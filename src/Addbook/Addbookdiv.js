@@ -25,7 +25,7 @@ import { useEffect } from 'react';
 
     useEffect(()=>{console.log(books)});
 
-    let formdata = useRef({bookname:'',authors: '', tags:'', description:'', url:'', published: '', updated:'' })
+    let formdata = useRef({bookname:'',authors: '', tags:'', description:'', url:'', published: '2023', updated:'' })
 
     function updateformfunc(e){
         let m =e.target.name;
@@ -52,7 +52,7 @@ const submitfn=(e)=>{
     e.preventDefault();
     console.log('hihu submitted', books);
     let temp=[...books];
-    let up=(new Date()).toISOString();
+    let up=(((new Date().toLocaleString("sv-SE")).slice(0,19)).replaceAll('-','/'));
     temp.unshift({...formdata.current, 'id':100, 'updated' : up });
     setbooks(temp);
 }

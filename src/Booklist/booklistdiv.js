@@ -9,7 +9,7 @@ import { useEffect } from 'react';
 import { useBook } from "../BookContext";
 
 
-function Booklistdiv(){
+function Booklistdiv(props){
 
     const [draftorbook,setdraftorbook]=useState('allbooks'); //state to show drafts or books
     let unfilteredbooks = (useBook())[draftorbook]; // getiing whatever we said to the 'draftorbook' state
@@ -20,6 +20,8 @@ function Booklistdiv(){
     const [tags,settags]=useState('');
     const [filteroptiondiv,setfilteredoptiondiv]=useState(false); //showing the filter option div?
 
+
+useEffect(()=>{ props.newbookadding && setfilteredoptiondiv(false)},[props.newbookadding])
 
 
     const finalfiltered=(unfilteredbooks)=>{  //actually filtering
@@ -54,12 +56,12 @@ useEffect(()=>finalfiltered(unfilteredbooks),[tags,authorname,bookname,unfiltere
 
                     <div className="container d-flex justify-content-between align-items-baseline" style={{borderBottom:'3px solid grey'}}>
                         <div className='d-flex align-items-baseline'>
-                            <div className={`px-2  ${draftorbook==='allbooks'? "h1 m-9" : "h3 text-muted mx-2"}`} onClick={()=>{setdraftorbook('allbooks')}}>Books</div>
-                            <div className={`px-2  ${draftorbook==='alldrafts'? "h1 m-9" : "h3 text-muted mx-2"}`} onClick={()=>{setdraftorbook('alldrafts')}}>Drafts</div>
+                            <div className={`px-2  ${draftorbook==='allbooks'? "h1 m-9" : "h3 text-muted mx-2"}`} onClick={()=>{setdraftorbook('allbooks')}} style={{cursor:'pointer'}}>Books</div>
+                            <div className={`px-2  ${draftorbook==='alldrafts'? "h1 m-9" : "h3 text-muted mx-2"}`} onClick={()=>{setdraftorbook('alldrafts')}} style={{cursor:'pointer'}}>Drafts</div>
                         </div>
 
                         <div>
-                            <div className='btn btn-secondary py-0 m-1' style={{fontSize:20}} onClick={()=>setfilteredoptiondiv(!filteroptiondiv)}>Tools</div>
+                            <div className='btn btn-secondary py-0 m-1' style={{fontSize:20}} onClick={()=> {!props.newbookadding && setfilteredoptiondiv(!filteroptiondiv)}}>Tools</div>
                             <button className="btn btn-secondary py-0" style={{fontSize:20}} onClick={refreshfilter}>&#8635;</button>
                         </div>
                     </div>

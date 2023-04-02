@@ -16,7 +16,7 @@ function ImageSelect(props)
     useEffect(()=>{document.getElementById('coverimg').style.opacity='1';
         document.getElementById('coverimg').addEventListener('error', function handleError() {
         document.getElementById('coverimg').style.opacity='0.5';
-        console.log('hi')
+        document.getElementById('url').value='';
       });},[props.Coverlink])
 
     return(
