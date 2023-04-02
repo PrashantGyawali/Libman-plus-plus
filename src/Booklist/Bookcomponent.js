@@ -1,5 +1,5 @@
 import '../App.scss'
-import Tags from './Tagsrenderer';
+import Tagsrender from './Tagsrenderer';
 export default function BookComponent(prop)
 {
 
@@ -26,7 +26,7 @@ export default function BookComponent(prop)
 
                                     <div>
                                         <p className="text-dark text-start descriptiontxt m-1" >{props.description}</p>
-                                        <p className="text-dark text-start  tagstxt m-0" >Tags: <Tags tags={props.tags}/></p>                                        
+                                        <p className="text-dark text-start  tagstxt m-0" >Tags: <Tagsrender tags={props.tags}/></p>                                        
                                     </div>
                                 </div>
   

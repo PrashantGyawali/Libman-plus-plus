@@ -13,8 +13,6 @@ import { useBook } from "../BookContext";
 import { useEffect } from 'react';
 
 
-
-
  const Addbookdiv=(props)=>
 {
 
@@ -22,8 +20,13 @@ import { useEffect } from 'react';
     const [Coverlink,setCoverlink]=useState('');
     const books = (useBook()).allbooks;
     const setbooks = (useBook()).setallbooks;
+    const drafts = (useBook()).alldrafts;
+    const setdrafts = (useBook()).setalldrafts;
+    const currentid = (useBook()).currentid;
+    const setcurrentid = (useBook()).setcurrentid;
 
-    useEffect(()=>{console.log(books)});
+    // useEffect(()=>{console.log(books)});
+
 
     let formdata = useRef({bookname:'',authors: '', tags:'', description:'', url:'', published: '2023', updated:'' })
 
@@ -39,6 +42,14 @@ import { useEffect } from 'react';
         console.log(formdata);
     }
 
+const dateonchange=(e)=>{
+        if(Number(e.target.value)>Number(e.target.max) || Number(e.target.value)<Number(e.target.min))
+         {
+            e.target.value=2023
+        }
+        else{ updateformfunc(e) }; 
+    }
+    
 
 const divanimation={
         key:'addbookbtn',
@@ -52,24 +63,26 @@ const submitfn=(e)=>{
     e.preventDefault();
     console.log('hihu submitted', books);
     let temp=[...books];
+    let tempid=currentid;
     let up=(((new Date().toLocaleString("sv-SE")).slice(0,19)).replaceAll('-','/'));
-    temp.unshift({...formdata.current, 'id':100, 'updated' : up });
+    temp.unshift({...formdata.current, 'id':tempid, 'updated' : up });
+    setcurrentid(currentid+1);
     setbooks(temp);
 }
 
-const dateonchange=(e)=>{
-    if(Number(e.target.value)>Number(e.target.max) || Number(e.target.value)<Number(e.target.min))
-     {
-        e.target.value=2023
-    }
-    else{ updateformfunc(e) }; 
-}
 
 const cancel=()=>
 {props.togglenewbookadding()};
 
 const close=()=>{
-props.togglenewbookadding();
+    let up=(((new Date().toLocaleString("sv-SE")).slice(0,19)).replaceAll('-','/'));
+    let temp=[...drafts];
+    let tempid=currentid;
+    temp.unshift({...formdata.current, 'id':tempid, 'updated' : up });
+    setcurrentid(currentid+1);
+    setdrafts(temp);
+    localStorage.drafts=JSON.stringify(temp);
+    props.togglenewbookadding();
 }
 
 

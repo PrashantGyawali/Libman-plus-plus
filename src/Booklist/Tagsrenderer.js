@@ -1,7 +1,9 @@
-export default function Tags(props){
+export default function Tagsrender(props){
 
     const taglist= [];
-    props['tags'].forEach((e)=>{taglist.push(e.value)});
+    if(props['tags'])
+    {
+        props['tags'].forEach((e)=>{taglist.push(e.value)});
     
     return (
         <>
@@ -15,5 +17,5 @@ export default function Tags(props){
                 }
             )}
         </>
-    );
+    );}
 }

@@ -5,12 +5,19 @@ const BookContext =createContext();
 
 export const BookProvider=({children})=>{
     const [allbooks,setallbooks]= useState(data);
-    let t=[...data];//testin purposes only, will implement local storage soon
-    t.pop();
+    // let t=[...data];//testin purposes only, will implement local storage soon
+    // t.pop();
+
+    localStorage.clear();
+
+    let tempid=localStorage.currentid?localStorage.currentid:1;
+    let t = localStorage.drafts ? JSON.parse(localStorage.drafts) : [];
     const [alldrafts,setalldrafts]= useState(t);
+    const [currentid,setcurrentid]=useState(tempid);
+    console.log(t);
 
     return (
-    <BookContext.Provider value={{allbooks,setallbooks,alldrafts,setalldrafts}}>
+    <BookContext.Provider value={{allbooks,setallbooks,alldrafts,setalldrafts,currentid,setcurrentid}}>
         {children}
     </BookContext.Provider>);
 }

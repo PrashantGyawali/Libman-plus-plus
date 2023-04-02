@@ -14,6 +14,7 @@ function Booklistdiv(props){
     const [draftorbook,setdraftorbook]=useState('allbooks'); //state to show drafts or books
     let unfilteredbooks = (useBook())[draftorbook]; // getiing whatever we said to the 'draftorbook' state
 
+
     const [filteredBooks,setfilteredBooks]=useState(unfilteredbooks); //initially
     const [bookname,setBookname]=useState(''); //setting default values for the filter option div
     const [authorname,setauthorname]=useState('');
@@ -21,24 +22,28 @@ function Booklistdiv(props){
     const [filteroptiondiv,setfilteredoptiondiv]=useState(false); //showing the filter option div?
 
 
-useEffect(()=>{ props.newbookadding && setfilteredoptiondiv(false)},[props.newbookadding])
+    useEffect(()=>{ props.newbookadding && setfilteredoptiondiv(false)},[props.newbookadding])
 
 
     const finalfiltered=(unfilteredbooks)=>{  //actually filtering
         let x=unfilteredbooks;
-        x=x.filter((e)=>
+
+        if (x)
         {
-            let re = new RegExp(bookname, 'i');
-            let re2=new RegExp(authorname, 'i');
-            const areEqual = tags?tags.every(obj => (e.tags).some(otherObj => JSON.stringify(obj) === JSON.stringify(otherObj))):true;
+            console.log(x);
+             x=x.filter((e)=>
+            {
+                let re = new RegExp(bookname, 'i');
+                let re2=new RegExp(authorname, 'i');
+                const areEqual = tags?tags.every(obj => (e.tags).some(otherObj => JSON.stringify(obj) === JSON.stringify(otherObj))):true;
 
-           return (bookname?(e.bookname).match(re):true) && (authorname?(e.authors).match(re2):true) && areEqual;
+            return (bookname?(e.bookname).match(re):true) && (authorname?(e.authors).match(re2):true) && areEqual;
 
-        });
-        console.log(x);
+            });
+            console.log(x);
 
-
-        setfilteredBooks(x);
+            setfilteredBooks(x);
+        }
     }
 
     const refreshfilter=()=>{ //refresh the filter i.e show all books once again
@@ -54,7 +59,7 @@ useEffect(()=>finalfiltered(unfilteredbooks),[tags,authorname,bookname,unfiltere
     return (
                 <div>
 
-                    <div className="container d-flex justify-content-between align-items-baseline" style={{borderBottom:'3px solid grey'}}>
+                    <div className="container-fluid d-flex justify-content-between align-items-baseline px-2 " style={{borderBottom:'3px solid grey'}}>
                         <div className='d-flex align-items-baseline'>
                             <div className={`px-2  ${draftorbook==='allbooks'? "h1 m-9" : "h3 text-muted mx-2"}`} onClick={()=>{setdraftorbook('allbooks')}} style={{cursor:'pointer'}}>Books</div>
                             <div className={`px-2  ${draftorbook==='alldrafts'? "h1 m-9" : "h3 text-muted mx-2"}`} onClick={()=>{setdraftorbook('alldrafts')}} style={{cursor:'pointer'}}>Drafts</div>
