@@ -4,14 +4,17 @@ import data from './testdata.json'
 const BookContext =createContext();
 
 export const BookProvider=({children})=>{
-    const [allbooks,setallbooks]= useState(data);
-    // let t=[...data];//testin purposes only, will implement local storage soon
-    // t.pop();
+
+
 
 
     let tempid=localStorage.currentid?Number(localStorage.currentid):1;
-    let t = localStorage.drafts ? JSON.parse(localStorage.drafts) : [];
-    const [alldrafts,setalldrafts]= useState(t);
+    let draftsfromlocalstorage = localStorage.drafts ? JSON.parse(localStorage.drafts) : [];
+    let booksfromlocalstorage = localStorage.books ? JSON.parse(localStorage.books) : [];
+
+    const [alldrafts,setalldrafts]= useState(draftsfromlocalstorage);
+    const [allbooks,setallbooks]= useState(booksfromlocalstorage);
+
     const [currentid,setcurrentid]=useState(tempid);
     const [defaultvalue,setdefaultvalue]=useState(''); //for editing books
 

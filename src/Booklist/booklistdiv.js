@@ -12,7 +12,7 @@ import { useBook } from "../BookContext";
 function Booklistdiv(props){
 
     const [draftorbook,setdraftorbook]=useState('allbooks'); //state to show drafts or books
-    let unfilteredbooks = (useBook())[draftorbook]; // getiing whatever we said to the 'draftorbook' state
+    let unfilteredbooks = (useBook())[draftorbook]; // getting whatever we said to the 'draftorbook' state
 
 
     const [filteredBooks,setfilteredBooks]=useState(unfilteredbooks); //initially
@@ -23,7 +23,7 @@ function Booklistdiv(props){
 
     const togglenewbookadding=()=>props.togglenewbookadding('edit');
 
-
+//if new book being added dont show the filter div
     useEffect(()=>{ props.newbookadding && setfilteredoptiondiv(false)},[props.newbookadding])
 
 

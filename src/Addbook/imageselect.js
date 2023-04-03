@@ -15,7 +15,7 @@ function ImageSelect(props)
         props.setCoverlink(document.getElementById('url').value);
     }
 
-
+//making sure the link is to an image 
     useEffect(()=>{document.getElementById('coverimg').style.opacity='1';
         document.getElementById('coverimg').addEventListener('error', function handleError() {
         document.getElementById('coverimg').style.opacity='0.5';

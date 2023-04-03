@@ -10,7 +10,7 @@ import  Button  from 'react-bootstrap/Button';
 import  Container  from 'react-bootstrap/Container';
 import '../App.scss'
 import { useBook } from "../BookContext";
-import { useEffect } from 'react';
+
 
 
  const Addbookdiv=(props)=>
@@ -18,14 +18,7 @@ import { useEffect } from 'react';
 
     const { allbooks: books, setallbooks: setbooks, alldrafts: drafts, setalldrafts: setdrafts, currentid, setcurrentid, defaultvalue: defaultvalues } = useBook();
 
-    // const books = (useBook()).allbooks;
-    // const setbooks = (useBook()).setallbooks;
-    // const drafts = (useBook()).alldrafts;
-    // const setdrafts = (useBook()).setalldrafts;
-    // const currentid = (useBook()).currentid;
-    // const setcurrentid = (useBook()).setcurrentid;
-    // const defaultvalues=(useBook()).defaultvalue;
-
+//Basically Setting up default values that was set up in useBook context 
     let t_bookname=useBook()?.defaultvalue?.bookname || '';
     let t_url=useBook()?.defaultvalue?.url || '';
     let t_authors=useBook()?.defaultvalue?.authors || '';
@@ -33,26 +26,27 @@ import { useEffect } from 'react';
     let t_desc=useBook()?.defaultvalue?.description || '';
 
 
-
-
-
-
-
     const [Coverlink,setCoverlink]=useState(t_url);
+
+//Setting up the ref that stores the current data in the inputs, this data is modified whenever the input is changed
     let formdata = useRef({bookname: t_bookname, authors: t_authors, tags:'', description:t_desc, url: t_url, published: t_published, updated:'' })
 
+//This is the function that modifies most of the ref data on input change
     function updateformfunc(e){
         let m =e.target.name;
         formdata.current[`${m}`]= e.target.value;
         console.log(formdata);
     }
 
+// Tags are updated in the same ref but since it uses react-select library, and its value is in form of array of objects 
+//it has different behaviour for onchange, soI decided to updating is done separately
     function updatetags(o)
     {
         formdata.current[`tags`]= o;
-        console.log(formdata);
     }
 
+//Just some logic to make sure date published is not greater than current year (cannot add unpubished books :|  )  and not too old books (sorry ancient scriptures)
+//Also update the form values
 const dateonchange=(e)=>{
         if(Number(e.target.value)>Number(e.target.max) || Number(e.target.value)<Number(e.target.min))
          {
@@ -61,7 +55,7 @@ const dateonchange=(e)=>{
         else{ updateformfunc(e) }; 
     }
     
-
+//Animation, self explanatory
 const divanimation={
         key:'addbookbtn',
         initial:{y: "100%", opacity: 0, scaleY:0},
@@ -70,10 +64,13 @@ const divanimation={
         exit:{y: "100%", opacity: 0, scaleY:0, transition:{duration:0.3}}
         }
 
+//adding the book on submit
 const submitfn=(e)=>{
     e.preventDefault();
     console.log('hihu submitted', books);
-    console.log(defaultvalues.id)
+    console.log(defaultvalues.id);
+
+//if editing the book (since book when editing inherits the 'id' default value, we can use it to find if being edited or new book )
     if(defaultvalues.id){
         let temp=[...books];
         if (temp){
@@ -83,51 +80,52 @@ const submitfn=(e)=>{
             setbooks(temp2);
         }
     }
+
+//if creating a new book
     else{
         let temp=[...books];
         let tempid=currentid;
         let up=(((new Date().toLocaleString("sv-SE")).slice(0,19)).replaceAll('-','/'));
         temp.unshift({...formdata.current, 'id':tempid, 'updated' : up });
-        setcurrentid(currentid+1);
+        //make sure to increase teh id for the next book
+        setcurrentid(currentid+1); 
+        localStorage.currentid=currentid;
+        //update the book list 
         setbooks(temp);
+        localStorage.books=JSON.stringify(temp);
     }
-    props.togglenewbookadding()
-}
-
-
-const cancel=()=>
-{props.togglenewbookadding()};
-
-const deletebook=()=>{
-    let booktemp=[...books];
-    let drafttemp=[...drafts];
-    console.log(defaultvalues.id);
-    let t= booktemp.findIndex((e)=>Number(e.id)===Number(defaultvalues.id));
-    console.log(t,booktemp,drafttemp)
-    if(t!==(-1)) 
-        {   console.log('found in books')
-            booktemp.splice(t,1);
-            setbooks(booktemp);
-            // localStorage.drafts=JSON.stringify(booktemp);
-        }
-    else{
-        console.log('found in drafts')
-        t= drafttemp.findIndex((e)=>Number(e.id)===Number(defaultvalues.id));
-        drafttemp.splice(t,1);
-        setdrafts(drafttemp);
-        localStorage.drafts=JSON.stringify(drafttemp);
-    }
-
     props.togglenewbookadding();
 }
 
+//close without saving draft or anything
+const cancel=()=>
+{props.togglenewbookadding()};
+
+//Logic for deleting the book
+const deletebook=()=>{
+    //Filter the books list and create new list not comtaining the deleted book (Allows deleting books)
+    let booktemp=books.filter((e)=>Number(e.id)!==Number(defaultvalues.id))
+    setbooks(booktemp);
+    localStorage.books=JSON.stringify(booktemp);
+
+    //Filter the drafts list and create new list not comtaining the deleted draft(Allows deleting drafts)
+    let drafttemp=drafts.filter((e)=>Number(e.id)!==Number(defaultvalues.id))
+    setdrafts(drafttemp);
+    localStorage.drafts=JSON.stringify(drafttemp);
+
+    props.togglenewbookadding(); //close the input field
+}
+
+//Logic for closing and saving as draft the book
 const close=()=>{
-    if(formdata.current.bookname)
+    if(formdata.current.bookname) //Save as draft if the user gives the name of the book
         {
             let up=(((new Date().toLocaleString("sv-SE")).slice(0,19)).replaceAll('-','/'));
             let temp=[...drafts];
             let tempid=currentid;
-            let test=(temp.findIndex((e)=>Number(e.id)===Number(defaultvalues.id)));
+
+//check if the id of the book is already present in the drafts, if present then update the draft, if not then create a new one
+            let test=(temp.findIndex((e)=>Number(e.id)===Number(defaultvalues.id))); 
             if(Number(test)!==Number(-1))
             {
                 temp.splice(test,1);
@@ -145,7 +143,7 @@ const close=()=>{
                 localStorage.currentid=tempid;
             }
         }
-    props.togglenewbookadding();
+    props.togglenewbookadding(); //closes the input field
 }
 
 
