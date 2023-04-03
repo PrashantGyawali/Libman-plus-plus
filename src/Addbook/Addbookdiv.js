@@ -24,12 +24,13 @@ import { useBook } from "../BookContext";
     let t_authors=useBook()?.defaultvalue?.authors || '';
     let t_published=useBook()?.defaultvalue?.published || 2023;
     let t_desc=useBook()?.defaultvalue?.description || '';
+    let t_tags=useBook()?.defaultvalue?.tags || [];
 
 
     const [Coverlink,setCoverlink]=useState(t_url);
 
 //Setting up the ref that stores the current data in the inputs, this data is modified whenever the input is changed
-    let formdata = useRef({bookname: t_bookname, authors: t_authors, tags:'', description:t_desc, url: t_url, published: t_published, updated:'' })
+    let formdata = useRef({bookname: t_bookname, authors: t_authors, tags:t_tags, description:t_desc, url: t_url, published: t_published, updated:'' })
 
 //This is the function that modifies most of the ref data on input change
     function updateformfunc(e){
@@ -137,10 +138,10 @@ const close=()=>{
             else{
                 temp.unshift({...formdata.current, 'id':tempid, 'updated' : up });
                 tempid++;
-                setcurrentid(tempid);
-                setdrafts(temp);
                 localStorage.drafts=JSON.stringify(temp);
                 localStorage.currentid=tempid;
+                setcurrentid(tempid);
+                setdrafts(temp);
             }
         }
     props.togglenewbookadding(); //closes the input field
@@ -192,7 +193,7 @@ return (
                 <div>
                     {defaultvalues && <button className='btn btn-dark' style={{fontSize:25, margin:7}} onClick={deletebook}>Delete</button>}
                     <Button variant="danger"  style={{fontSize:25, margin:7}} onClick={cancel}>Cancel</Button>
-                    <button className="btn btn-success" type='submit' style={{fontSize:25, margin:7}} >Add Book</button>
+                    <button className="btn btn-success" type='submit' style={{fontSize:25, margin:7}} >{defaultvalues?'Save Book':'Add Book'}</button>
                 </div>
                 
             </div>

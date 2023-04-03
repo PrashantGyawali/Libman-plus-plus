@@ -1,11 +1,11 @@
 import { createContext,useContext,useState } from "react"
-import data from './testdata.json'
+// import data from './testdata.json'  For test bok data
 
 const BookContext =createContext();
 
 export const BookProvider=({children})=>{
 
-
+   // const [allbooks,setallbooks]= useState(data); ---> For test books data
 
 
     let tempid=localStorage.currentid?Number(localStorage.currentid):1;

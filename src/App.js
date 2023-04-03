@@ -1,7 +1,7 @@
 import './App.scss';
 import  Addbookbtn  from './Addbookbtn.js';
 import  Addbookdiv  from './Addbook/Addbookdiv.js';
-import { motion, AnimatePresence } from "framer-motion"
+import { AnimatePresence } from "framer-motion"
 import {useState } from 'react';
 
 import Booklistdiv from './Booklist/booklistdiv';

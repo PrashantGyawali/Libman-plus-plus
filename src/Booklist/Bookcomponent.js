@@ -38,11 +38,12 @@ export default function BookComponent(prop)
 
                                 <div className="h-100 justify-content-center text-start" style={{display:'flex', flexDirection:'column'}} >
                                     <p className="text-dark text-start text-truncate m-0" style={{overflow:'hidden'}}>
-                                            <small className="text-muted">Published: {props.published} ~tempTag:{props.id}</small>
+                                            <small className="text-muted">Published: {props.published} </small>
                                     </p>
                                     <p className="text-dark text-start text-truncate m-0" style={{overflow:'hidden'}}>
                                         <small className="text-muted">Last updated: {props.updated}</small>
                                     </p>
+                                    <p className='text-start'><small ><span className='text-muted ' style={{fontSize:'11.5px'}}>ID:{props.id}</span></small></p>
                                 </div>
 
                             </div>

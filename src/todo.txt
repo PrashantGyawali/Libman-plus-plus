@@ -1,5 +1,2 @@
-clicking (X) button when addbuttondiv active will save as draft and close div
-
-clicking cancel  button when div is active will close the div and not save the new book, 
-but will not create any changes if its editing the book
+-Darkmode
 
