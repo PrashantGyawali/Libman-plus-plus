@@ -16,18 +16,30 @@ import { useEffect } from 'react';
  const Addbookdiv=(props)=>
 {
 
-    // const defaultvalues=useRef(props.defaultvalues);
-    const [Coverlink,setCoverlink]=useState('');
-    const books = (useBook()).allbooks;
-    const setbooks = (useBook()).setallbooks;
-    const drafts = (useBook()).alldrafts;
-    const setdrafts = (useBook()).setalldrafts;
-    const currentid = (useBook()).currentid;
-    const setcurrentid = (useBook()).setcurrentid;
+    const { allbooks: books, setallbooks: setbooks, alldrafts: drafts, setalldrafts: setdrafts, currentid, setcurrentid, defaultvalue: defaultvalues } = useBook();
+
+    // const books = (useBook()).allbooks;
+    // const setbooks = (useBook()).setallbooks;
+    // const drafts = (useBook()).alldrafts;
+    // const setdrafts = (useBook()).setalldrafts;
+    // const currentid = (useBook()).currentid;
+    // const setcurrentid = (useBook()).setcurrentid;
+    // const defaultvalues=(useBook()).defaultvalue;
+    
+    let t_bookname=useBook()?.defaultvalue?.bookname || '';
+    let t_url=useBook()?.defaultvalue?.url || '';
+    let t_authors=useBook()?.defaultvalue?.authors || '';
+    let t_published=useBook()?.defaultvalue?.published || 2023;
+    let t_desc=useBook()?.defaultvalue?.description || '';
 
 
 
-    let formdata = useRef({bookname:'',authors: '', tags:'', description:'', url:'', published: '2023', updated:'' })
+
+
+
+
+    const [Coverlink,setCoverlink]=useState(t_url);
+    let formdata = useRef({bookname: t_bookname, authors: t_authors, tags:'', description:t_desc, url: t_url, published: t_published, updated:'' })
 
     function updateformfunc(e){
         let m =e.target.name;
@@ -61,17 +73,34 @@ const divanimation={
 const submitfn=(e)=>{
     e.preventDefault();
     console.log('hihu submitted', books);
-    let temp=[...books];
-    let tempid=currentid;
-    let up=(((new Date().toLocaleString("sv-SE")).slice(0,19)).replaceAll('-','/'));
-    temp.unshift({...formdata.current, 'id':tempid, 'updated' : up });
-    setcurrentid(currentid+1);
-    setbooks(temp);
+    console.log(defaultvalues.id)
+    if(defaultvalues.id){
+        let temp=[...books];
+        if (temp){
+            let temp2=temp.filter((e)=>Number(e.id)!==Number(defaultvalues.id))
+            let up=(((new Date().toLocaleString("sv-SE")).slice(0,19)).replaceAll('-','/'));
+            temp2.unshift({...formdata.current, 'id':defaultvalues.id, 'updated' : up });
+            setbooks(temp2);
+        }
+    }
+    else{
+        let temp=[...books];
+        let tempid=currentid;
+        let up=(((new Date().toLocaleString("sv-SE")).slice(0,19)).replaceAll('-','/'));
+        temp.unshift({...formdata.current, 'id':tempid, 'updated' : up });
+        setcurrentid(currentid+1);
+        setbooks(temp);
+    }
+    props.togglenewbookadding()
 }
 
 
 const cancel=()=>
 {props.togglenewbookadding()};
+
+const deletebook=()=>{
+    props.togglenewbookadding();
+}
 
 const close=()=>{
     if(formdata.current.bookname)
@@ -79,12 +108,23 @@ const close=()=>{
             let up=(((new Date().toLocaleString("sv-SE")).slice(0,19)).replaceAll('-','/'));
             let temp=[...drafts];
             let tempid=currentid;
-            temp.unshift({...formdata.current, 'id':tempid, 'updated' : up });
-            tempid++;
-            setcurrentid(tempid);
-            setdrafts(temp);
-            localStorage.drafts=JSON.stringify(temp);
-            localStorage.currentid=tempid;
+            let test=(temp.findIndex((e)=>Number(e.id)===Number(defaultvalues.id)));
+            if(Number(test)!==Number(-1))
+            {
+                temp.splice(test,1);
+                temp.unshift({...formdata.current, 'id':defaultvalues.id, 'updated' : up });
+                setdrafts(temp);
+                localStorage.drafts=JSON.stringify(temp);
+                localStorage.currentid=tempid;
+            }
+            else{
+                temp.unshift({...formdata.current, 'id':tempid, 'updated' : up });
+                tempid++;
+                setcurrentid(tempid);
+                setdrafts(temp);
+                localStorage.drafts=JSON.stringify(temp);
+                localStorage.currentid=tempid;
+            }
         }
     props.togglenewbookadding();
 }
@@ -120,21 +160,22 @@ return (
 
                 <Container>
                 <div className='col-12 mb-1 ms-1 ' style={{ textAlign: 'left'}}>Date published:</div>
-                <input type="number" required className='w-100 form-control' name="published" id="" defaultValue={2023} min='0' max='2023' onChange={(e)=>{dateonchange(e)}} style={{ textAlign: 'left', fontSize:19}} />
+                <input type="number" required className='w-100 form-control' name="published" id="" defaultValue={t_published} min='0' max='2023' onChange={(e)=>{dateonchange(e)}} style={{ textAlign: 'left', fontSize:19}} />
                 </Container>
                 
                 
                 <Container >
                     <div className='col-12 mb-1 ms-1' style={{ textAlign: 'left'}}>Description:</div>
-                    <Form.Control as="textarea" name='description' rows={6} onChange={(e)=>updateformfunc(e)} style={{ textAlign: 'left', resize: 'none'}} required/>
+                    <Form.Control as="textarea" name='description' rows={6} onChange={(e)=>updateformfunc(e)} style={{ textAlign: 'left', resize: 'none'}} defaultValue={t_desc} required/>
                 </Container>
             
                 </div>
 
             <div className='container h-100' style={{ display:'flex', justifyContent:'center', alignItems:'center'}}>
                 <div>
-                <button className="btn btn-success" type='submit' style={{fontSize:25, margin:7}} >Add Book</button>
-                <Button variant="danger"  style={{fontSize:25, margin:7}} onClick={cancel}>Cancel</Button>
+                    {defaultvalues && <button className='btn btn-dark' style={{fontSize:25, margin:7}} onClick={deletebook}>Delete</button>}
+                    <Button variant="danger"  style={{fontSize:25, margin:7}} onClick={cancel}>Cancel</Button>
+                    <button className="btn btn-success" type='submit' style={{fontSize:25, margin:7}} >Add Book</button>
                 </div>
                 
             </div>

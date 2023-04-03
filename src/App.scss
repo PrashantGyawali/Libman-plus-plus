@@ -92,8 +92,19 @@
 
 .booktitle{
   cursor: pointer;
+  height:2em;
 }
 
 .booktitle:hover{
   text-decoration: underline;
+}
+
+.optionsdiv{
+  display: flex;
+}
+
+@media only screen and (max-width: 324px) {
+  .optionsdiv{
+    display: inline;
+  }
 }

@@ -3,6 +3,7 @@ import React from 'react'
 import Select from 'react-select'
 import options from '../tagoptions.json'
 
+import { useBook } from "../BookContext";
 
 const Selecttags = (props) =>
 {
@@ -10,6 +11,7 @@ const Selecttags = (props) =>
 
 const [selectedOptions, setSelectedOptions] = React.useState([]);
 
+let t=useBook()?.defaultvalue?.tags;
 
 return(
 <div className="container p-1">
@@ -25,7 +27,7 @@ return(
             placeholder='Select Tags' 
             name="tags" 
             required  
-            // defaultValue={{  label: "Action", value: "Action"}}
+            defaultValue={t && t}
             onChange={(o) => {setSelectedOptions(o); props.updatefn(o);}} 
             isOptionDisabled={() => selectedOptions.length >= 12} id='hmm'/> 
     </div>

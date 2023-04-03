@@ -10,9 +10,9 @@ export default function Filteroptions(props){
 //animation
     const filterdivanimation={
         key:'addbookbtn',
-        initial:{y: '-45%', opacity: 0, scaleY:0},
+        initial:{y: '-50%', opacity: 0, scaleY:0},
         animate:{y: 0, opacity: 1, scaleY: 1},
-        transition:{duration:0.4, ease: "easeOut"},
+        transition:{duration:0.3, ease: "easeOut"},
         exit:{y: "-50%", opacity: 0, scaleY:0, transition:{duration:0.3}}
         }; 
 

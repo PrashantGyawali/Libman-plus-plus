@@ -1,8 +1,11 @@
 import { useEffect } from 'react';
 import '../App.scss'
+import { useBook } from "../BookContext";
 
 function ImageSelect(props)
 { 
+    let t=useBook()?.defaultvalue?.url;
+
     function updateform(e){
         props.updateformfunc(e);
     }
@@ -29,11 +32,12 @@ function ImageSelect(props)
         src={props.Coverlink} 
         style={{marginTop:0.5, border:"1px solid black", borderRadius:14 ,objectFit: 'fill',
         maxWidth: '99%', minWidth: '99%', minHeight:'100%',  aspectRatio: "0.75"}} 
+        defaultValue={t && t}
         /> 
     </div>
     <div className="mt-1"><span className="text-center w-100  h5" id="basic-addon3" >Book cover url:</span></div> 
     <div className="input-group m-1 p-2">
-    <input type="text" className="form-control" id="url" name='url' aria-describedby="basic-addon3" onChange={(e)=>updateform(e)} required/>
+    <input type="text" className="form-control" id="url" name='url' aria-describedby="basic-addon3" onChange={(e)=>updateform(e)} defaultValue={t && t} required/>
     <button className="btn btn-outline-secondary" type="button" onClick={updateurl}>&#10004;</button>
     </div>
 </div>)

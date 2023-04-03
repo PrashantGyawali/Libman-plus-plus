@@ -13,10 +13,12 @@ export const BookProvider=({children})=>{
     let t = localStorage.drafts ? JSON.parse(localStorage.drafts) : [];
     const [alldrafts,setalldrafts]= useState(t);
     const [currentid,setcurrentid]=useState(tempid);
+    const [defaultvalue,setdefaultvalue]=useState(''); //for editing books
+
 
 
     return (
-    <BookContext.Provider value={{allbooks,setallbooks,alldrafts,setalldrafts,currentid,setcurrentid}}>
+    <BookContext.Provider value={{allbooks,setallbooks,alldrafts,setalldrafts,currentid,setcurrentid,defaultvalue,setdefaultvalue}}>
         {children}
     </BookContext.Provider>);
 }

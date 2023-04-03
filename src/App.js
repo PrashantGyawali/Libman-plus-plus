@@ -5,15 +5,21 @@ import { motion, AnimatePresence } from "framer-motion"
 import {useState } from 'react';
 
 import Booklistdiv from './Booklist/booklistdiv';
+import { useBook } from "./BookContext";
 
 function App() {
 
   const [newbookadding,togglenewbookadding]=useState(false);
+  const resetdefaultvalues=(useBook()).setdefaultvalue
 
   const toggle=function()
   {
-  newbookadding?togglenewbookadding(false):togglenewbookadding('new');
-  console.log(newbookadding);
+    function toggleandreset(){
+      togglenewbookadding(false);
+      resetdefaultvalues('');
+    }
+    newbookadding?toggleandreset():togglenewbookadding('new');
+    console.log(newbookadding);
   };
 
 
@@ -32,13 +38,13 @@ function App() {
     <Addbookbtn togglefn={()=>{toggle(newbookadding)}} open={newbookadding}/>
 
 
-    <AnimatePresence>{ newbookadding && <Addbookdiv togglenewbookadding={toggle}/>}</AnimatePresence>
+    <AnimatePresence>{ newbookadding && <Addbookdiv togglenewbookadding={toggle} newbookadding={newbookadding}/>}</AnimatePresence>
 
 
 
       </div>
       
-     <Booklistdiv newbookadding={newbookadding}/>
+     <Booklistdiv newbookadding={newbookadding} togglenewbookadding={togglenewbookadding}/>
 
     </>
   );
