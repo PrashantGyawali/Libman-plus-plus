@@ -25,7 +25,7 @@ import { useEffect } from 'react';
     // const currentid = (useBook()).currentid;
     // const setcurrentid = (useBook()).setcurrentid;
     // const defaultvalues=(useBook()).defaultvalue;
-    
+
     let t_bookname=useBook()?.defaultvalue?.bookname || '';
     let t_url=useBook()?.defaultvalue?.url || '';
     let t_authors=useBook()?.defaultvalue?.authors || '';
@@ -99,6 +99,25 @@ const cancel=()=>
 {props.togglenewbookadding()};
 
 const deletebook=()=>{
+    let booktemp=[...books];
+    let drafttemp=[...drafts];
+    console.log(defaultvalues.id);
+    let t= booktemp.findIndex((e)=>Number(e.id)===Number(defaultvalues.id));
+    console.log(t,booktemp,drafttemp)
+    if(t!==(-1)) 
+        {   console.log('found in books')
+            booktemp.splice(t,1);
+            setbooks(booktemp);
+            // localStorage.drafts=JSON.stringify(booktemp);
+        }
+    else{
+        console.log('found in drafts')
+        t= drafttemp.findIndex((e)=>Number(e.id)===Number(defaultvalues.id));
+        drafttemp.splice(t,1);
+        setdrafts(drafttemp);
+        localStorage.drafts=JSON.stringify(drafttemp);
+    }
+
     props.togglenewbookadding();
 }
 
