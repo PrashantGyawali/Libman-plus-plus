@@ -20,14 +20,14 @@ import  {motion}  from "framer-motion";
     }
 
     return (
-        <div className='container-fluid  text-center d-flex justify-content-center'>
+        <div className='container-fluid  text-center d-flex justify-content-center background-white'>
 
-            <div className='row justify-content-center container-fluid col-md-12 col-11 text-center mt-2 text-light p-0 '>
+            <div className='row justify-content-center container-fluid col-md-12 col-11 text-center mt-2 txt-light p-0 '>
                 <motion.div
                     whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.9 }}   className='col-md-9 col-lg-7 col-12 bg-dark p-0'>
+                    whileTap={{ scale: 0.9 }}   className='col-md-9 col-lg-7 col-12 background-white p-0'>
 
-                    <Button onClick={toggle} className='btn-secondary m-0  col-12 text-center' id="bookbtn" style={{fontSize:23}}> <Text open={openvalue} /></Button>
+                    <Button onClick={toggle} className='btn-sec m-0  col-12 text-center' id="bookbtn" style={{fontSize:23}}> <Text open={openvalue} /></Button>
                 
                 </motion.div>
             </div>

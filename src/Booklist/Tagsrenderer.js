@@ -12,7 +12,7 @@ export default function Tagsrender(props){
                     let x= i===(taglist.length-1)?'':', ';
                     return (
                     <>
-                    <a href='http://localhost:3000/' key={i}>{tag}</a>{x}</>
+                    <a href='http://localhost:3000/' className="txt-dark" key={i}>{tag}</a>{x}</>
                     );
                 }
             )}

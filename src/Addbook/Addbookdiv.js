@@ -72,13 +72,22 @@ const submitfn=(e)=>{
     console.log(defaultvalues.id);
 
 //if editing the book (since book when editing inherits the 'id' default value, we can use it to find if being edited or new book )
+//dont forget to remove book from drafts when added/changes saved
     if(defaultvalues.id){
         let temp=[...books];
+        let drafttemp=[...drafts];
         if (temp){
             let temp2=temp.filter((e)=>Number(e.id)!==Number(defaultvalues.id))
+            let drafttemp2=drafttemp.filter((e)=>Number(e.id)!==Number(defaultvalues.id))
+
             let up=(((new Date().toLocaleString("sv-SE")).slice(0,19)).replaceAll('-','/'));
             temp2.unshift({...formdata.current, 'id':defaultvalues.id, 'updated' : up });
             setbooks(temp2);
+            setdrafts(drafttemp2);
+
+            localStorage.books=JSON.stringify(temp2);    
+            localStorage.drafts=JSON.stringify(drafttemp2);        
+    
         }
     }
 
@@ -154,16 +163,16 @@ return (
 
 <motion.div {...divanimation}>
     <Form onSubmit={(e)=>{submitfn(e)}} >
-    <div className='container px-0 p-0  bg-light  justify-self-center addbookdivscale'>
+    <div className='container px-0 p-0  background-white  justify-self-center addbookdivscale'>
 
-        <div className="row justify-content-center ">
+        <div className="row justify-content-center background-white">
 
             <ImageSelect setCoverlink={setCoverlink} updateformfunc={updateformfunc} Coverlink={Coverlink}/>
 
 
-            <div className="col-lg-7 col-md-9 col-12 p-0 d-flex flex-column" style={{border:"3px solid black", borderRadius: "0px 15px 15px 0px "}}>
+            <div className="col-lg-7 col-md-9 col-12 p-0 d-flex flex-column background-light" style={{border:"3px solid black", borderRadius: "0px 15px 15px 0px "}}>
                 <div>
-                <div className="container text-center h2">
+                <div className="container text-center h2 txt-dark">
                     Book Info
                     <Button className='d-inline float-end mt-1' onClick={close}>X</Button>    
                 </div>
@@ -177,14 +186,14 @@ return (
                 </Container>
 
                 <Container>
-                <div className='col-12 mb-1 ms-1 ' style={{ textAlign: 'left'}}>Date published:</div>
-                <input type="number" required className='w-100 form-control' name="published" id="" defaultValue={t_published} min='0' max='2023' onChange={(e)=>{dateonchange(e)}} style={{ textAlign: 'left', fontSize:19}} />
+                <div className='col-12 mb-1 ms-1 txt-dark' style={{ textAlign: 'left'}}>Date published:</div>
+                <input type="number" required className='w-100 form-control background-white txt-dark' name="published" id="" defaultValue={t_published} min='0' max='2023' onChange={(e)=>{dateonchange(e)}} style={{ textAlign: 'left', fontSize:19}} />
                 </Container>
                 
                 
                 <Container >
-                    <div className='col-12 mb-1 ms-1' style={{ textAlign: 'left'}}>Description:</div>
-                    <Form.Control as="textarea" name='description' rows={6} onChange={(e)=>updateformfunc(e)} style={{ textAlign: 'left', resize: 'none'}} defaultValue={t_desc} required/>
+                    <div className='col-12 mb-1 ms-1 txt-dark' style={{ textAlign: 'left'}}>Description:</div>
+                    <Form.Control className='background-white txt-dark' as="textarea" name='description' rows={6} onChange={(e)=>updateformfunc(e)} style={{ textAlign: 'left', resize: 'none'}} defaultValue={t_desc} required/>
                 </Container>
             
                 </div>

@@ -2,11 +2,12 @@ import  {motion}  from "framer-motion";
 import Select from 'react-select'
 import { useState } from "react";
 import options from '../tagoptions.json'
+import { useBook } from "../BookContext";
 
 export default function Filteroptions(props){
 
     const [selectedOptions, setSelectedOptions] = useState([]); //used to set maximum no of tags for filtering to 5
-
+    let theme=useBook().darkmode;
 //animation
     const filterdivanimation={
         key:'addbookbtn',
@@ -18,19 +19,17 @@ export default function Filteroptions(props){
 
     return(
     <motion.div {...filterdivanimation}>
-        <div className='container-fluid p-0 bg-white' style={{border:'1px solid grey', borderRadius:'0 0 10px 10px' , zIndex:1000}}>
-            <div className="h4 px-3 text-start">Filter By:</div>
+        <div className='container-fluid p-0 background-light' style={{border:'1px solid grey', borderRadius:'0 0 10px 10px' , zIndex:1000}}>
+            <div className="h4 px-3 text-start txt-dark">Filter By:</div>
 
                 <div className="container-fluid pb-3">
 
-                    <div className="form-floating mb-1">
-                        <input type="Text" className="form-control text-start" placeholder="Book name" id='booknamefilter' onChange={(e)=>{props.setBookname(e.target.value)}}/>
-                        <label>Book Name:</label>
+                    <div className="mb-1">
+                        <input type="text" className="form-control text-start background-white  txt-dark " placeholder="Book name:" id='booknamefilter' onChange={(e)=>{props.setBookname(e.target.value)}}/>
                     </div>
 
-                    <div className="form-floating mb-1">
-                        <input type="text" className="form-control text-start" placeholder="Author" id='authorfilter' onChange={(e)=>{props.setauthorname(e.target.value)}}/>
-                        <label>Authors:</label>
+                    <div className=" mb-1">
+                        <input type="text" className="form-control text-start background-white txt-dark" placeholder="Author:" id='authorfilter' onChange={(e)=>{props.setauthorname(e.target.value)}}/>
                     </div>
 
                     <Select 
@@ -41,13 +40,18 @@ export default function Filteroptions(props){
                     placeholder='Select Tags'
                     name="tags" 
                     required  
-                    // defaultValue={{  label: "Action", value: "Action"}}
+                    styles={{
+                        control: (baseStyles, state) => ({
+                          ...baseStyles,
+                          backgroundColor: theme ? 'black' : 'white',
+                        }),
+                        menuPortal: base => ({ ...base, zIndex: 9999})
+                      }}
                     onChange={(o) => {setSelectedOptions(o); props.settags(o);}} 
                     isOptionDisabled={() => selectedOptions.length >= 5} 
                     id='filtertags' 
                     style={{textAlign:'left'}} 
                     menuPortalTarget={document.body} 
-                    styles={{ menuPortal: base => ({ ...base, zIndex: 9999})}}
                     />
             </div>
         </div>    
