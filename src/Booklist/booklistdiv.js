@@ -75,7 +75,7 @@ useEffect(()=>finalfiltered(unfilteredbooks),[tags,authorname,bookname,unfiltere
                     <AnimatePresence>{filteroptiondiv && <Filteroptions {...{settags,setBookname,setauthorname}} />}</AnimatePresence>
 
                     <div className='row m-0 align-items-baseline background-light' style={{justifyContent:'flex-start', padding:'0px 1px'}}>
-                        {filteredBooks.length>0 ? filteredBooks.map((e)=><BookComponent data={e} key={e.id} togglenewbookadding={togglenewbookadding}/>): <div className="container"><h3 className="txt-dark m-3">A bare bookshelf is not a sign of a lack of knowledge, but rather an invitation to explore new worlds and fill it with the stories that move you.</h3></div>}
+                        {filteredBooks.length>0 ? filteredBooks.map((e)=><BookComponent data={e} key={e.id} togglenewbookadding={togglenewbookadding}/>): <div className="container"><h3 className="txt-dark m-3" style={{  fontStyle: "italic"}}>"A bare bookshelf is not a sign of a lack of knowledge, but rather an invitation to explore new worlds and fill it with the stories that move you."</h3></div>}
                     </div>
 
                 </div>
