@@ -27,7 +27,7 @@ export default function BookComponent(prop)
 
                             <div className="col-8 col-md-7 p-2 d-flex flex-column h-100">
                                 <div>
-                                <a href='#bookbtn' style={{textDecoration:'none'}}><h6 className="txt-dark booktitle" onClick={()=>{console.log(prop,props); setdefaultvalue(props); prop.togglenewbookadding();  }}>{props.bookname}</h6></a>
+                                <a href='#bookbtn' style={{textDecoration:'none'}}><h4 className="txt-dark booktitle" onClick={()=>{console.log(prop,props); setdefaultvalue(props); prop.togglenewbookadding();  }}>{props.bookname}</h4></a>
                                     <h6 className="txt-dark text-end">-{props.authors}</h6>
 
                                     <div>
