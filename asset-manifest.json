@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Libman-plus-plus/static/css/main.3025bd2b.css",
+    "main.js": "/Libman-plus-plus/static/js/main.a6cab547.js",
+    "index.html": "/Libman-plus-plus/index.html",
+    "main.3025bd2b.css.map": "/Libman-plus-plus/static/css/main.3025bd2b.css.map",
+    "main.a6cab547.js.map": "/Libman-plus-plus/static/js/main.a6cab547.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3025bd2b.css",
+    "static/js/main.a6cab547.js"
+  ]
+}
