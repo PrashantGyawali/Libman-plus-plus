@@ -1,8 +1,21 @@
-# Getting Started with Create React App
+# Libman++
+The modern solution to personal and small scale information resource(book) management.
+Save yourself from the hassle of remembering hundreds of books in your head. 
+**Eyestrain? no problem** 
+# Darkmode available
+
+Jokes aside :joy: , this is a simple project i made to learn react. Code quality is probably bad. But it works as intended.
+**Please report any bugs and issues in this project**
+
+
+
+---
+**CRA Template readme. Is this useful?**
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### Available Scripts
 
 In the project directory, you can run:
 
