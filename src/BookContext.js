@@ -7,11 +7,10 @@ export const BookProvider=({children})=>{
 
    // const [allbooks,setallbooks]= useState(data); ---> For test books data
 
-
     let tempid=localStorage.currentid?Number(localStorage.currentid):1;
     let draftsfromlocalstorage = localStorage.drafts ? JSON.parse(localStorage.drafts) : [];
     let booksfromlocalstorage = localStorage.books ? JSON.parse(localStorage.books) : [];
-    let olddarkmode = localStorage.darkmode || true;
+    let olddarkmode = localStorage.darkmode || false;
 
 
     const [alldrafts,setalldrafts]= useState(draftsfromlocalstorage);

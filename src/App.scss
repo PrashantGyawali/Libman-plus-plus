@@ -44,6 +44,15 @@
 @media  (max-width:333px) {
   .descriptiontxt{
     -webkit-line-clamp: 2;
+    height:2.2em
+  }
+}
+@media  (min-width:700px) {
+  .descriptiontxt{
+    line-height:1.4em;
+    height:5.6em;
+    -webkit-line-clamp: 4;
+
   }
 }
 

@@ -58,14 +58,14 @@ useEffect(()=>finalfiltered(unfilteredbooks),[tags,authorname,bookname,unfiltere
 
     return (
                 <div>
-                    <div  style={{borderBottom:`3px solid  ${dark?'white':'grey'}`}} >
+                    <div  style={{borderBottom:`3px solid  ${dark?'white':'grey'}`}} className="background-white">
                     <div className="container-fluid justify-content-between align-items-baseline px-2 optionsdiv background-white">
-                        <div className='d-flex align-items-baseline'>
+                        <div className='d-flex align-items-baseline background-white'>
                             <div className={`px-2  ${draftorbook==='allbooks'? "h1 txt-dark" : "h3 txt-muted mx-2"}`} onClick={()=>{setdraftorbook('allbooks')}} style={{cursor:'pointer'}}>Books</div>
                             <div className={`px-2  ${draftorbook==='alldrafts'? "h1 txt-dark" : "h3 txt-muted mx-2"}`} onClick={()=>{setdraftorbook('alldrafts')}} style={{cursor:'pointer'}}>Drafts</div>
                         </div>
 
-                        <div style={{display:'inline'}} >
+                        <div style={{display:'inline'}} className="background-white">
                             <div className='btn btn-sec py-0 m-1' style={{fontSize:20}} onClick={()=> {!props.newbookadding && setfilteredoptiondiv(!filteroptiondiv)}}>Tools</div>
                             <button className="btn btn-sec py-0 " style={{fontSize:20}} onClick={refreshfilter}>&#8635;</button>
                         </div>

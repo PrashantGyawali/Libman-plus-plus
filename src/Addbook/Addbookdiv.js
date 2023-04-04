@@ -36,7 +36,6 @@ import { useBook } from "../BookContext";
     function updateformfunc(e){
         let m =e.target.name;
         formdata.current[`${m}`]= e.target.value;
-        console.log(formdata);
     }
 
 // Tags are updated in the same ref but since it uses react-select library, and its value is in form of array of objects 
@@ -68,8 +67,6 @@ const divanimation={
 //adding the book on submit
 const submitfn=(e)=>{
     e.preventDefault();
-    console.log('hihu submitted', books);
-    console.log(defaultvalues.id);
 
 //if editing the book (since book when editing inherits the 'id' default value, we can use it to find if being edited or new book )
 //dont forget to remove book from drafts when added/changes saved

@@ -25,10 +25,10 @@ export default function BookComponent(prop)
                                 /> 
                             </div>
 
-                            <div className="col-8 col-md-7 p-2 d-flex flex-column h-100">
+                            <div className="col-8 col-md-7 p-2 d-flex flex-column h-100 ">
                                 <div>
-                                <a href='#bookbtn' style={{textDecoration:'none'}}><h4 className="txt-dark booktitle" onClick={()=>{console.log(prop,props); setdefaultvalue(props); prop.togglenewbookadding();  }}>{props.bookname}</h4></a>
-                                    <h6 className="txt-dark text-end">-{props.authors}</h6>
+                                <a href='#bookbtn' style={{textDecoration:'none'}}><h4 className="txt-dark booktitle" onClick={()=>{setdefaultvalue(props); prop.togglenewbookadding();  }}>{props.bookname}</h4></a>
+                                    <h5 className="txt-dark text-end">-{props.authors}</h5>
 
                                     <div>
                                         <p className="txt-dark text-start descriptiontxt m-1" >{props.description}</p>
@@ -44,7 +44,6 @@ export default function BookComponent(prop)
                                     <p className="txt-dark text-start text-truncate m-0" style={{overflow:'hidden'}}>
                                         <small className="txt-muted">Last updated: {props.updated}</small>
                                     </p>
-                                    <p className='text-start'><small ><span className='txt-muted ' style={{fontSize:'11.5px'}}>ID:{props.id}</span></small></p>
                                 </div>
 
                             </div>

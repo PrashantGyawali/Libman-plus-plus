@@ -22,7 +22,7 @@ export default function Filteroptions(props){
         <div className='container-fluid p-0 background-light' style={{border:'1px solid grey', borderRadius:'0 0 10px 10px' , zIndex:1000}}>
             <div className="h4 px-3 text-start txt-dark">Filter By:</div>
 
-                <div className="container-fluid pb-3">
+                <div className="container-fluid pb-3 bg-light">
 
                     <div className="mb-1">
                         <input type="text" className="form-control text-start background-white  txt-dark " placeholder="Book name:" id='booknamefilter' onChange={(e)=>{props.setBookname(e.target.value)}}/>
