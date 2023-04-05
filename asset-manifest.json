@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Libman-plus-plus/static/css/main.9348ba6a.css",
-    "main.js": "/Libman-plus-plus/static/js/main.f5230203.js",
+    "main.js": "/Libman-plus-plus/static/js/main.ecd6e8ee.js",
     "index.html": "/Libman-plus-plus/index.html",
     "main.9348ba6a.css.map": "/Libman-plus-plus/static/css/main.9348ba6a.css.map",
-    "main.f5230203.js.map": "/Libman-plus-plus/static/js/main.f5230203.js.map"
+    "main.ecd6e8ee.js.map": "/Libman-plus-plus/static/js/main.ecd6e8ee.js.map"
   },
   "entrypoints": [
     "static/css/main.9348ba6a.css",
-    "static/js/main.f5230203.js"
+    "static/js/main.ecd6e8ee.js"
   ]
 }
