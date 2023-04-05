@@ -25,15 +25,14 @@ function App() {
     <>
       <div className="container-fluid p-3  text-center justify-content-center background-white">
         <motion.div
-          onClick={() => {
-            setdarktheme(!theme);
-            localStorage.darkmode = theme;
-          }}
+          
           whileHover={{ scale: 1, backgroundColor: theme ? "white" : "black" }}
           whileTap={{ scale: 0.9 }}
           style={{ cursor: "pointer" }}
         >
-          <div className="container-fluid background-light txt-dark text-center fixed-top">
+          <div className="container-fluid background-light txt-dark text-center fixed-top" onClick={() => {
+            setdarktheme(!theme);
+          }}>
             <div className="h1">Libman++</div>
           </div>
         </motion.div>

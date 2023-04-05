@@ -13,7 +13,7 @@ export const BookProvider = ({ children }) => {
   let booksfromlocalstorage = localStorage.books
     ? JSON.parse(localStorage.books)
     : [];
-  let olddarkmode = localStorage.darkmode || false;
+  let olddarkmode = localStorage.darkmode==='true'?true:false;
 
   const [alldrafts, setalldrafts] = useState(draftsfromlocalstorage);
   const [allbooks, setallbooks] = useState(booksfromlocalstorage);
@@ -70,6 +70,8 @@ export const BookProvider = ({ children }) => {
       },
     };
     setVariables(themecolor[`${theme}`]);
+    localStorage.darkmode=darkmode;
+    console.log(localStorage.darkmode)
   }, [darkmode]);
 
   return (
